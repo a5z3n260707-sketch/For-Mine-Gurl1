@@ -1,111 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Anam ❤️</title>
+const pages = document.querySelectorAll(".page");
+const enterBtn = document.getElementById("startBtn");
+const nextBtn = document.getElementById("nextBtn");
+const photoBtn = document.getElementById("photoBtn");
+const loveBtn = document.getElementById("loveBtn");
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+let current = 0;
 
-<link rel="stylesheet" href="style.css">
-</head>
+function showPage(index) {
+  pages.forEach((p, i) => {
+    p.classList.toggle("active", i === index);
+  });
+  current = index;
+}
 
-<body>
+enterBtn.onclick = () => {
+  showPage(1);
+};
 
-<div class="background"></div>
-<div id="hearts"></div>
+nextBtn.onclick = () => {
+  showPage(2);
+};
 
-<!-- Page 1 -->
-<section id="page1" class="page active">
-  <div class="card">
-    <h1>Hey Anam ❤️</h1>
-    <p>I made this little world just for you... 🥹🫶</p>
-    <button id="startBtn">Enter 💗</button>
-  </div>
-</section>
-<!-- Page 2 -->
-<section id="page2" class="page">
+const slides = document.querySelectorAll(".slide");
+let slideIndex = 0;
 
-<div class="card glass">
+function autoSlide() {
+  if (slides.length === 0) return;
 
-<h2>🥹🫶</h2>
+  slides.forEach(img => img.classList.remove("active"));
+  slides[slideIndex].classList.add("active");
 
-<h1 class="loveText">
-You are only mine 💗
-</h1>
+  slideIndex++;
+  if (slideIndex >= slides.length) {
+    slideIndex = 0;
+  }
 
-<div class="roses">
-🤍🌹 🤍🌹 🤍🌹
-</div>
+  setTimeout(autoSlide, 2500);
+}
 
-<button id="nextBtn">
-Continue ❤️
-</button>
+photoBtn.onclick = () => {
+  showPage(3);
+  autoSlide();
+};
 
-</div>
+loveBtn.onclick = () => {
+  showPage(3);
+  autoSlide();
+};
 
-</section>
-<!-- Page 3 -->
-<section id="page3" class="page">
+window.onload = () => {
+  showPage(0);
+};
 
-<div class="card">
+document.addEventListener("contextmenu", e => {
+  e.preventDefault();
+});
 
-<h1>I'm Sorry ❤️</h1>
+document.addEventListener("dragstart", e => {
+  e.preventDefault();
+});
 
-<p class="message">
-My sweetheart <b>Anam</b> 🥹💗<br><br>
+document.addEventListener("selectstart", e => {
+  e.preventDefault();
+});
 
-I'm reallyyy soooo sorryyy for made a mistake.<br><br>
+const music = new Audio("music.mp3");
+music.loop = true;
 
-But I really love you sooo sooooo sooooooo soooooooooo muchhhhhhhh ❤️<br><br>
-
-Mein dobara nahi karunga aisi galtiiii...<br><br>
-
-Plssssssss mujhe iss baar maaf kar deinnn meri jaannnnn... 🥹🫶
-</p>
-
-<button id="photoBtn">
-Our Memories 📸
-</button>
-
-</div>
-
-</section>
-<!-- Page 4 -->
-<section id="page4" class="page">
-
-<div class="card">
-
-<h1>Our Memories 📸</h1>
-
-<div class="slider">
-
-<img src="photo1.jpg" class="slide active">
-
-<img src="photo2.jpg" class="slide">
-
-<img src="photo3.jpg" class="slide">
-
-</div>
-
-<h2 class="finalText">
-I Love You Forever ❤️
-</h2>
-
-<p>
-No matter what happens...<br>
-You'll always be my favourite person. 🥹🫶
-</p>
-
-<button id="loveBtn">
-Forever Together 💖
-</button>
-
-</div>
-
-</section>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+document.addEventListener("click", () => {
+  music.play();
+}, { once: true });
