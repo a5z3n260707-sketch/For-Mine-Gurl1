@@ -1,7 +1,7 @@
 const pages=document.querySelectorAll(".page");
-const enterBtn=document.getElementById("enterBtn");
-const yesBtn=document.getElementById("yesBtn");
-const noBtn=document.getElementById("noBtn");
+const startBtn=document.getElementById("startBtn");
+const nextBtn=document.getElementById("nextBtn");
+const photoBtn=document.getElementById("photoBtn");
 const loveBtn=document.getElementById("loveBtn");
 
 let current=0;
@@ -13,16 +13,14 @@ p.classList.toggle("active",i===index);
 current=index;
 }
 
-enterBtn.onclick=()=>{
+startBtn.onclick=()=>{
 showPage(1);
 };
-
-yesBtn.onclick=()=>{
-showPage(2);
 };
 
-noBtn.onclick=()=>{
-alert("🥹🫶 Pleaseee don't say no...");
+nextBtn.onclick=()=>{
+showPage(2);
+};
 };
 const slides=document.querySelectorAll(".slide");
 let slideIndex=0;
@@ -40,10 +38,16 @@ slideIndex=0;
 
 setTimeout(autoSlide,2500);
 }
+photoBtn.onclick=()=>{
+showPage(3);
+autoSlide();
+};
 
 loveBtn.onclick=()=>{
 showPage(3);
 autoSlide();
+};
+
 };
 window.onload=()=>{
 showPage(0);
