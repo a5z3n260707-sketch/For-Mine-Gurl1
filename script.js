@@ -60,3 +60,9 @@ e.preventDefault();
 document.addEventListener("selectstart",e=>{
 e.preventDefault();
 });
+const music = new Audio("music.mp3");
+music.loop = true;
+
+document.addEventListener("click", () => {
+  music.play();
+}, { once: true });
